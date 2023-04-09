@@ -12,9 +12,9 @@ const addSec = document.querySelector('.for-add');
 const contactSec = document.querySelector('.for-contact');
 
 const books = JSON.parse(localStorage.getItem('books-list')) || [{
-  title: 'The Great Gatsby', author: 'F. Scott Fitzgerald'
-},{
-  title: 'Jane Eyre', author: 'Charlotte Bronte'
+  title: 'The Great Gatsby', author: 'F. Scott Fitzgerald',
+}, {
+  title: 'Jane Eyre', author: 'Charlotte Bronte',
 }];
 
 const tbody = document.createElement('tbody');
@@ -23,7 +23,6 @@ const date = new Date();
 const time = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
 
 document.querySelector('.date').innerHTML = `${date.toDateString()}, ${time}`;
-
 
 listSec.style.display = 'block';
 addSec.style.display = 'none';
@@ -74,7 +73,6 @@ class Books {
   }
 
   static display() {
-console.log(tbody)
     let i = 0;
     tbody.innerHTML = '';
     if (books.length !== 0) {
