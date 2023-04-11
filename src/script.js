@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-//import Date from './modules/date.js';
+import Date from './modules/date.js';
 
 const button = document.querySelector('.Button');
 const title = document.querySelector('.title');
@@ -10,6 +10,7 @@ const contactNav = document.querySelector('.contactNav');
 const listSec = document.querySelector('.for-list');
 const addSec = document.querySelector('.for-add');
 const contactSec = document.querySelector('.for-contact');
+const table = document.querySelector('.table')
 
 const tbody = document.createElement('tbody');
 const booksList = document.querySelector('.books');
@@ -40,6 +41,7 @@ addNav.addEventListener('click', () => {
   listNav.classList.remove('nav-links');
   addNav.classList.add('nav-links');
   contactNav.classList.remove('nav-links');
+  title.focus();
 });
 contactNav.addEventListener('click', () => {
   contactSec.style.display = 'block';
@@ -67,11 +69,11 @@ class Books {
     title.focus();
   }
 
-  static setEventListener(){
+  static setEventListener() {
     const y = document.querySelectorAll('.remove');
-    y.forEach(button => {
+    y.forEach((button) => {
       button.addEventListener('click', Books.remove);
-    })
+    });
   }
 
   static display() {
@@ -79,10 +81,11 @@ class Books {
     let i = 0;
     tbody.innerHTML = '';
 
-    if(books.length === 0){
-      tbody.innerHTML = `<p class='btn btn-outline-primary'> Please add books in the next tab </p>`
-    }
-    else {
+    if (books.length === 0) {
+      tbody.innerHTML = '<p class=\'btn btn-outlin-primary\'> Please add books in the next tab </p>';
+      table.classList.replace('table','center');
+    } else {
+      table.classList.replace('center','table');
       books.forEach((book) => {
         tbody.innerHTML += `
       <tr class='book'>
@@ -99,9 +102,8 @@ class Books {
 
   static remove(e) {
     const toBeRemoved = e.target.parentElement.parentElement;
-    console.log('to be removed' ,toBeRemoved,'parent of toBeRemoved', toBeRemoved.parentElement)
     tbody.removeChild(toBeRemoved);
-    let i = e.target.id;
+    const i = e.target.id;
     books.splice(i, 1);
     Books.display();
   }
@@ -109,4 +111,4 @@ class Books {
 
 Books.display();
 button.addEventListener('click', Books.addBook);
-//window.addEventListener('load', Date());
+window.addEventListener('load', Date());

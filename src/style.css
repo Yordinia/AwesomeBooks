@@ -55,6 +55,7 @@ form {
 form input {
   width: 100%;
   min-height: 40px;
+  padding: 0.6rem;
 }
 
 .for-add {
@@ -82,11 +83,34 @@ form input {
   cursor: pointer;
 }
 
+.btn-outlin-primary {
+  --bs-btn-color: #fa3223;
+  --bs-btn-border-color: #c4b31c;
+  --bs-btn-hover-color: #34d81e;
+  --bs-btn-hover-bg: #93ce33;
+  --bs-btn-hover-border-color: #df3011;
+  --bs-btn-focus-shadow-rgb: 51,51,51;
+  --bs-btn-active-color: #26f1a4;
+  --bs-btn-active-bg: #e5f048;
+  --bs-btn-active-border-color: #333;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(102, 20, 255, 0.125);
+  --bs-btn-disabled-color: #36022e;
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: #b6e730;
+  --bs-gradient: none;
+}
+
 .nav-links {
   border-style: solid;
   border-width: 2px;
   border-radius: 25px 25px 55px 5px/5px 55px 25px 25px;
   color: aqua;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
 }
 
 footer {
