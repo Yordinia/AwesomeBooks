@@ -10,7 +10,7 @@ const contactNav = document.querySelector('.contactNav');
 const listSec = document.querySelector('.for-list');
 const addSec = document.querySelector('.for-add');
 const contactSec = document.querySelector('.for-contact');
-const table = document.querySelector('.table')
+const table = document.querySelector('.table');
 
 const tbody = document.createElement('tbody');
 const booksList = document.querySelector('.books');
@@ -82,10 +82,10 @@ class Books {
     tbody.innerHTML = '';
 
     if (books.length === 0) {
-      tbody.innerHTML = '<p class=\'btn btn-outlin-primary\'> Please add books in the next tab </p>';
-      table.classList.replace('table','center');
+      tbody.innerHTML = '<p class=\'btn btn-outline\'> Please add books in the next tab </p>';
+      table.classList.replace('table', 'center');
     } else {
-      table.classList.replace('center','table');
+      table.classList.replace('center', 'table');
       books.forEach((book) => {
         tbody.innerHTML += `
       <tr class='book'>
