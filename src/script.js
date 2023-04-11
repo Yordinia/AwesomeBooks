@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
+//import Date from './modules/date.js';
 
 const button = document.querySelector('.Button');
 const title = document.querySelector('.title');
 const author = document.querySelector('.author');
-const booksList = document.querySelector('.books');
 const listNav = document.querySelector('.listNav');
 const addNav = document.querySelector('.addNav');
 const contactNav = document.querySelector('.contactNav');
@@ -11,18 +11,15 @@ const listSec = document.querySelector('.for-list');
 const addSec = document.querySelector('.for-add');
 const contactSec = document.querySelector('.for-contact');
 
+const tbody = document.createElement('tbody');
+const booksList = document.querySelector('.books');
+booksList.appendChild(tbody);
+
 const books = JSON.parse(localStorage.getItem('books-list')) || [{
   title: 'The Great Gatsby', author: 'F. Scott Fitzgerald',
 }, {
   title: 'Jane Eyre', author: 'Charlotte Bronte',
 }];
-
-const tbody = document.createElement('tbody');
-booksList.appendChild(tbody);
-const date = new Date();
-const time = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-
-document.querySelector('.date').innerHTML = `${date.toDateString()}, ${time}`;
 
 listSec.style.display = 'block';
 addSec.style.display = 'none';
@@ -65,38 +62,51 @@ class Books {
     const book = new Books(title.value, author.value);
 
     books.push(book);
-    localStorage.setItem('books-list', JSON.stringify(books));
-
     Books.display();
     document.querySelector('form').reset();
     title.focus();
   }
 
+  static setEventListener(){
+    const y = document.querySelectorAll('.remove');
+    y.forEach(button => {
+      button.addEventListener('click', Books.remove);
+    })
+  }
+
   static display() {
+    localStorage.setItem('books-list', JSON.stringify(books));
     let i = 0;
     tbody.innerHTML = '';
-    if (books.length !== 0) {
+
+    if(books.length === 0){
+      tbody.innerHTML = `<p class='btn btn-outline-primary'> Please add books in the next tab </p>`
+    }
+    else {
       books.forEach((book) => {
         tbody.innerHTML += `
       <tr class='book'>
         <td><strong>"${book.title}"</strong> by <em>${book.author}</em></td>
-        <td><button onclick="Books.remove(${i})" class='btn btn-outline-primary'> Remove </button> </td> 
+        <td><button id=${i} class='remove btn btn-outline-primary'> Remove </button> </td> 
       </tr>
       `;
         i += 1;
       });
+      Books.setEventListener();
     }
     return 0;
   }
 
-  static remove(i) {
-    const x = document.querySelectorAll('.book')[i];
-    tbody.removeChild(x);
+  static remove(e) {
+    const toBeRemoved = e.target.parentElement.parentElement;
+    console.log('to be removed' ,toBeRemoved,'parent of toBeRemoved', toBeRemoved.parentElement)
+    tbody.removeChild(toBeRemoved);
+    let i = e.target.id;
     books.splice(i, 1);
-    localStorage.setItem('books-list', JSON.stringify(books));
     Books.display();
   }
 }
 
 Books.display();
 button.addEventListener('click', Books.addBook);
+//window.addEventListener('load', Date());
