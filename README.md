@@ -1,8 +1,8 @@
 # AwesomeBooks
-A simple web app to store and retrive your favorite book title's and authors.
-
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
+A simple web app to store and retrive your favorite book title's and authors.
+![image](https://user-images.githubusercontent.com/75666332/235904314-11914b2f-316d-41d9-b819-a4083730911e.png)
 <!-- TABLE OF CONTENTS -->
 
 # 📗 Table of Contents
@@ -24,8 +24,8 @@ A simple web app to store and retrive your favorite book title's and authors.
 - [📝 License](#license)
 
 <!-- PROJECT DESCRIPTION -->
-
 # 📖 Awesome Books <a name="about-project"></a>
+![] (https://github.com/Yordinia/Webpack_Initiator/blob/main/Yordi.png)
 
 **Awesome Books** is a website that allow users to create a book with title and author name and add to their books list on the page.
 
